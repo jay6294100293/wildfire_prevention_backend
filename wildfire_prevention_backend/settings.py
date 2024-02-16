@@ -74,10 +74,20 @@ WSGI_APPLICATION = 'wildfire_prevention_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',
+        'USER': 'admin',
+        'PASSWORD': '8F57I706pX93j8nCPTC4TIUz',
+        'HOST': 'reasonably-learning-bison-iad.a1.pgedge.io',
+        'PORT': '5432',
     }
 }
 
