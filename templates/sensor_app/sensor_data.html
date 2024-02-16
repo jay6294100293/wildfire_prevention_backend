@@ -1,4 +1,5 @@
 <!-- sensor_app/templates/sensor_app/sensor_data.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,38 +13,61 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
+
         h1 {
             color: #fff;
             margin: 0;
         }
+
         .sensor-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 20px;
         }
+
         .sensor-data {
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: left;
-            max-width: 400px; /* Adjust the maximum width as needed */
-            margin-top: 20px;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
         }
+
         .sensor-data.alert {
-            background-color: #f8d7da; /* Red background for alert */
-            border-color: #f5c6cb; /* Red border color for alert */
-            color: #721c24; /* Dark red text color for alert */
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
         }
+
         .risk-message {
-            color: #721c24; /* Dark red text color for risk message */
+            color: #721c24;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .safe-message {
+            color: #28a745;
             font-weight: bold;
             margin-top: 10px;
         }
@@ -56,12 +80,14 @@
     <div class="sensor-container">
         <div class="sensor-data {% if latest_data and latest_data.temperature > 30 %}alert{% endif %}">
             {% if latest_data %}
-                <p><strong>Temperature:</strong> {{ latest_data.temperature }} °C</p>
-                <p><strong>Humidity:</strong> {{ latest_data.humidity }} %</p>
-                <p><strong>Wind Speed:</strong> {{ latest_data.wind_speed }} km/h</p>
-                {% if risk_message %}
-                    <p class="risk-message">{{ risk_message }}</p>
-                {% endif %}
+                <p><strong>Temperature:</strong> {{ latest_data.temperature|floatformat:2 }} °C</p>
+                <p><strong>Humidity:</strong> {{ latest_data.humidity|floatformat:2 }} %</p>
+                <p><strong>Wind Speed:</strong> {{ latest_data.wind_speed|floatformat:2 }} km/h</p>
+              {% if latest_data.temperature > 30 %}
+    <p class="risk-message">Caution: The environmental conditions are conducive to the initiation and spread of wildfires.</p>
+{% else %}
+    <p class="safe-message">The environmental conditions are currently safe.</p>
+{% endif %}
             {% else %}
                 <p>No sensor data available.</p>
             {% endif %}
