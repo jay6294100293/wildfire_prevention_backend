@@ -1,0 +1,71 @@
+<!-- sensor_app/templates/sensor_app/sensor_data.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        h1 {
+            color: #fff;
+            margin: 0;
+        }
+        .sensor-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .sensor-data {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+            max-width: 400px; /* Adjust the maximum width as needed */
+            margin-top: 20px;
+        }
+        .sensor-data.alert {
+            background-color: #f8d7da; /* Red background for alert */
+            border-color: #f5c6cb; /* Red border color for alert */
+            color: #721c24; /* Dark red text color for alert */
+        }
+        .risk-message {
+            color: #721c24; /* Dark red text color for risk message */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sensor Data</h1>
+    </header>
+    <div class="sensor-container">
+        <div class="sensor-data {% if latest_data and latest_data.temperature > 30 %}alert{% endif %}">
+            {% if latest_data %}
+                <p><strong>Temperature:</strong> {{ latest_data.temperature }} °C</p>
+                <p><strong>Humidity:</strong> {{ latest_data.humidity }} %</p>
+                <p><strong>Wind Speed:</strong> {{ latest_data.wind_speed }} km/h</p>
+                {% if risk_message %}
+                    <p class="risk-message">{{ risk_message }}</p>
+                {% endif %}
+            {% else %}
+                <p>No sensor data available.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
