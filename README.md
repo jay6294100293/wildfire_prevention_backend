@@ -26,6 +26,7 @@ For analysis and testing, refer to the following repository data:
 - [Repository URL](link_to_repository_data)
 
 ## Frontend
+<img width="223" alt="f1" src="https://github.com/jay6294100293/wildfire_prevention_backend/assets/142631405/f5886ce9-0d24-4adc-b660-b13e9751d836">
 
 The current status is displayed in a simple frontend. The API can be further integrated with mobile notifications, cellular notifications, and IoT devices for real-time alerts.
 
