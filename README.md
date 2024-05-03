@@ -24,7 +24,7 @@ This repository contains the backend code for wildfire prevention system. The sy
 
 For analysis and testing, refer to the following repository data:
 - [Demo URL]
-- ([link_to_repository_data](https://wildfire-prevention-backend.vercel.app/api/sensor_data/))
+- ([click here](https://wildfire-prevention-backend.vercel.app/api/sensor_data/))
 
 ## Frontend
 <img width="223" alt="f1" src="https://github.com/jay6294100293/wildfire_prevention_backend/assets/142631405/f5886ce9-0d24-4adc-b660-b13e9751d836">
